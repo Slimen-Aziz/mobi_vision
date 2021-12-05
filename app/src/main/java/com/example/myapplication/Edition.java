@@ -19,7 +19,7 @@ public class Edition extends AppCompatActivity {
         setContentView(R.layout.activity_edition);
 
         mylist = findViewById(R.id.rv_edition);
-        edrech = findViewById(R.id.edrech_edition);
+        //edrech = findViewById(R.id.edrech_edition);
 
         //ArrayAdapter ad = new ArrayAdapter(Edition.this, android.R.layout.simple_list_item_1, Acceuil.data);
         //MyAdapter ad = new MyAdapter(this, Acceuil.data);
