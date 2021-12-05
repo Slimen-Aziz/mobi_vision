@@ -45,8 +45,8 @@ public class Classify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classify);
 
-        //IDProf=(ImageView)findViewById(R.id.IdProf);
-        //Class_Btn=(Button)findViewById(R.id.UploadBtn);
+        IDProf=(ImageView)findViewById(R.id.idProfClassify);
+        Class_Btn=(Button)findViewById(R.id.guessBtnClassify);
 
         IDProf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +111,7 @@ public class Classify extends AppCompatActivity {
                     JSONObject postData = new JSONObject();
                     try {
                         postData.put("base64", Document_img1);
+                        //Log.e("Guess", "Guessing...");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -119,7 +120,8 @@ public class Classify extends AppCompatActivity {
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Toast.makeText(Classify.this, response.toString(), Toast.LENGTH_SHORT).show();
+                            Log.e("Guess Result", response.toString());
+                            Toast.makeText(Classify.this, response.toString(), Toast.LENGTH_LONG).show();
                         }
                     }, new Response.ErrorListener() {
                         @Override
