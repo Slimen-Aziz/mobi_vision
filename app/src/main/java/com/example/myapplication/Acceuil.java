@@ -69,6 +69,8 @@ public class Acceuil extends AppCompatActivity {
                         try {
                             JSONArray arr = response.getJSONArray("result");
 
+                            pictureData.clear();
+
                             for (int i = 0; i < arr.length(); i++){
                                 pictureData.add(arr.get(i).toString());
                             }
