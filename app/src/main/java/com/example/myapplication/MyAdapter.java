@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -44,11 +43,11 @@ public class MyAdapter extends BaseAdapter {
 
         Contact c = data.get(i);
 
-        TextView tvnom = v.findViewById(R.id.tvnom_contact);
-        tvnom.setText(c.getNom() + " " + c.getPrenom());
+        //TextView tvnom = v.findViewById(R.id.tvnom_contact);
+        //tvnom.setText(c.getNom() + " " + c.getPrenom());
 
-        TextView tvnum = v.findViewById(R.id.tvnum_contact);
-        tvnum.setText(c.getNumero());
+        //TextView tvnum = v.findViewById(R.id.tvnum_contact);
+        //tvnum.setText(c.getNumero());
 
         return v;
 

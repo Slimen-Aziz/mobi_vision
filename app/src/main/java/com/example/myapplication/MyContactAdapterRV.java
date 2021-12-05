@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,12 +52,12 @@ public class MyContactAdapterRV extends RecyclerView.Adapter<MyContactAdapterRV.
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvnomprenom = itemView.findViewById(R.id.tvnom_contact);
-            tvnum = itemView.findViewById(R.id.tvnum_contact);
+            //tvnomprenom = itemView.findViewById(R.id.tvnom_contact);
+            //tvnum = itemView.findViewById(R.id.tvnum_contact);
 
-            btndel = itemView.findViewById(R.id.btndel_contact);
-            btnmod = itemView.findViewById(R.id.btnmod_contact);
-            btncall = itemView.findViewById(R.id.btndel_contact);
+            //btndel = itemView.findViewById(R.id.btndel_contact);
+            //btnmod = itemView.findViewById(R.id.btnmod_contact);
+            //btncall = itemView.findViewById(R.id.btndel_contact);
 
             btndel.setOnClickListener(new View.OnClickListener() {
                 @Override
