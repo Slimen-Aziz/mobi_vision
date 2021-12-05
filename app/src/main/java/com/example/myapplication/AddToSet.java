@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,6 @@ import java.io.ByteArrayOutputStream;
 
 public class AddToSet extends AppCompatActivity {
 
-    public static final String KEY_User_Document1 = "doc1";
     ImageView IDProf;
     Button Upload_Btn;
 
@@ -130,6 +130,7 @@ public class AddToSet extends AppCompatActivity {
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+                            Toast.makeText(AddToSet.this, "Upload Complete", Toast.LENGTH_SHORT).show();
                             System.out.println(response);
                             Log.e("UPLOAD", response.toString());
                         }
@@ -160,6 +161,7 @@ public class AddToSet extends AppCompatActivity {
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 imageBitmap = getResizedBitmap(imageBitmap, 400);
                 IDProf.setImageBitmap(imageBitmap);
+                BitMapToString(imageBitmap);
 
                 //Perfect !
 

@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class Acceuil extends AppCompatActivity {
 
     TextView tvusername;
-    Button btnajout, btnaff, btnUpload;
+    Button btnajout, btnaff, btnGuess;
 
     public static ArrayList<Contact> data = new ArrayList<Contact>();
     public static ArrayList<String> pictureData = new ArrayList<String>();
@@ -46,6 +46,7 @@ public class Acceuil extends AppCompatActivity {
         tvusername = findViewById(R.id.tvuser_acc);
         btnajout = findViewById(R.id.btnajout_acc);
         btnaff = findViewById(R.id.btnaff_acc);
+        btnGuess = findViewById(R.id.btnClass_acc);
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
@@ -54,7 +55,8 @@ public class Acceuil extends AppCompatActivity {
         tvusername.setText("Acceuil de " + u);
 
         //set data here
-        String url = "http://197.1.111.148/my_pictures?label=Roger%20Federer";
+        String urlLabel = u.replace("\\s", "%20");
+        String url = "http://197.1.111.148/my_pictures?label=" + urlLabel;
         RequestQueue rq = Volley.newRequestQueue(this);
         JsonObjectRequest jrq = new JsonObjectRequest(
                 Request.Method.GET,
@@ -99,6 +101,14 @@ public class Acceuil extends AppCompatActivity {
             public void onClick(View view) {
                 //Intent i = new Intent(Acceuil.this, Ajout.class);
                 Intent i = new Intent(Acceuil.this, AddToSet.class);
+                startActivity(i);
+            }
+        });
+
+        btnGuess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Acceuil.this, Classify.class);
                 startActivity(i);
             }
         });

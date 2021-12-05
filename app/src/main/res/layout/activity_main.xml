@@ -22,15 +22,6 @@
         android:inputType="textPersonName"
         android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/edmp_auth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Saisir votre mode de passe"
-        android:inputType="numberPassword"
-        android:minHeight="48dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
