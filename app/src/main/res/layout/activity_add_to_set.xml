@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
+    android:background="@color/BG"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".AddToSet">
 
     <TextView
@@ -14,6 +15,8 @@
         android:layout_marginTop="20dp"
         android:text="Add To Dataset"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
 
@@ -22,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginTop="10dp"
-        android:background="#BC9B9B" />
+        android:background="@color/med_blue" />
 
     <EditText
         android:id="@+id/edLab_add"
@@ -31,7 +34,9 @@
         android:ems="10"
         android:hint="Label"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="#D3CFCF" />
 
     <Button
         android:id="@+id/UploadBtn"

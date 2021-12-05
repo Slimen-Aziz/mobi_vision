@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BG"
     android:orientation="vertical"
     tools:context=".Edition">
 
@@ -14,24 +15,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:paddingBottom="20dp"
-        android:text="Edition" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Recherche"
-        android:textColor="#F44336"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/edrech_edition"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="Taper içi pour rechercher"
-        android:inputType="textPersonName" />
+        android:text="Mes images"
+        android:textColor="@color/royal_blue" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_edition"
