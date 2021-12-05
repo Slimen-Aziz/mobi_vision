@@ -1,17 +1,16 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText ednom, edmp;
+    EditText ednom; //edmp;
     Button btnval, btnquit;
 
     @Override
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ednom = findViewById(R.id.ednom_auth);
-        edmp = findViewById(R.id.edmp_auth);
+        //edmp = findViewById(R.id.edmp_auth);
         btnval = findViewById(R.id.btnval_auth);
         btnquit = findViewById(R.id.btnquit_auth);
 
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nom = ednom.getText().toString();
-                String mp = edmp.getText().toString();
+                /*String mp = edmp.getText().toString();
                 if (nom.equalsIgnoreCase("Aziz") && mp.equals("123"))
                 {
                     Intent i = new Intent(MainActivity.this, Acceuil.class);
@@ -44,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     Toast.makeText(MainActivity.this, "Valeur(s) non valide(s)", Toast.LENGTH_SHORT).show();
-                }
+                }*/
+
+                Intent i = new Intent(MainActivity.this, Acceuil.class);
+                i.putExtra("user", nom);
+                startActivity(i);
+
             }
         });
 

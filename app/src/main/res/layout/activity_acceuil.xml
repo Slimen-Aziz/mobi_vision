@@ -33,9 +33,10 @@
         android:layout_height="wrap_content"
         android:text="Mes images" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnClass_acc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:text="Guess" />
+
 </LinearLayout>
