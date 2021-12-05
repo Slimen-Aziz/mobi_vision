@@ -175,7 +175,7 @@ public class Classify extends AppCompatActivity {
 
     public String BitMapToString(Bitmap userImage1) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
+        userImage1.compress(Bitmap.CompressFormat.PNG, 85, baos);
         byte[] b = baos.toByteArray();
         Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
         return Document_img1;

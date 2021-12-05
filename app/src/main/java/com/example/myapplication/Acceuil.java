@@ -101,6 +101,7 @@ public class Acceuil extends AppCompatActivity {
             public void onClick(View view) {
                 //Intent i = new Intent(Acceuil.this, Ajout.class);
                 Intent i = new Intent(Acceuil.this, AddToSet.class);
+                i.putExtra("user", u);
                 startActivity(i);
             }
         });

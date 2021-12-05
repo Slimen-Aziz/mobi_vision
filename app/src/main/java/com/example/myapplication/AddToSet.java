@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -39,7 +38,7 @@ public class AddToSet extends AppCompatActivity {
     ImageView IDProf;
     Button Upload_Btn;
 
-    EditText label;
+    //EditText label;
 
     private String Document_img1="";
 
@@ -50,7 +49,13 @@ public class AddToSet extends AppCompatActivity {
 
         IDProf=(ImageView)findViewById(R.id.IdProf);
         Upload_Btn=(Button)findViewById(R.id.UploadBtn);
-        label= findViewById(R.id.edLab_add);
+        //label= findViewById(R.id.edLab_add);
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String u = b.getString("user");
+
+        //label.setHint(u);
 
         IDProf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +126,7 @@ public class AddToSet extends AppCompatActivity {
                     JSONObject postData = new JSONObject();
                     try {
                         postData.put("base64", Document_img1);
-                        postData.put("label", label.getText().toString());
+                        postData.put("label", u);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -133,6 +138,7 @@ public class AddToSet extends AppCompatActivity {
                             Toast.makeText(AddToSet.this, "Upload Complete", Toast.LENGTH_SHORT).show();
                             System.out.println(response);
                             Log.e("UPLOAD", response.toString());
+                            Acceuil.pictureData.add(Document_img1);
                         }
                     }, new Response.ErrorListener() {
                         @Override
@@ -225,7 +231,7 @@ public class AddToSet extends AppCompatActivity {
 
     public String BitMapToString(Bitmap userImage1) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
+        userImage1.compress(Bitmap.CompressFormat.PNG, 85, baos);
         byte[] b = baos.toByteArray();
         Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
         return Document_img1;
