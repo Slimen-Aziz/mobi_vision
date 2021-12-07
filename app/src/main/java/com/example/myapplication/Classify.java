@@ -104,7 +104,7 @@ public class Classify extends AppCompatActivity {
                 }
                 else{
 
-                    String url = "http://197.1.111.148/classify_picture";
+                    String url = Acceuil.apiURL + "classify_picture";
 
                     RequestQueue requestQueue = Volley.newRequestQueue(Classify.this);
 

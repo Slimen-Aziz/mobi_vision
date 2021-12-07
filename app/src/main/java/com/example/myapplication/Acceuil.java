@@ -35,6 +35,7 @@ public class Acceuil extends AppCompatActivity {
 
     public static ArrayList<Contact> data = new ArrayList<Contact>();
     public static ArrayList<String> pictureData = new ArrayList<String>();
+    public static String apiURL = "http://197.1.111.148/";
 
     public static boolean callPermission = false;
 
@@ -55,8 +56,10 @@ public class Acceuil extends AppCompatActivity {
         tvusername.setText("Acceuil de " + u);
 
         //set data here
-        String urlLabel = u.replace("\\s", "%20");
-        String url = "http://197.1.111.148/my_pictures?label=" + urlLabel;
+        String urlLabel = u.replaceAll("\\s+", "%20");
+        Log.e("urlLabel", urlLabel);
+        String url = apiURL + "my_pictures?label=" + urlLabel;
+
         RequestQueue rq = Volley.newRequestQueue(this);
         JsonObjectRequest jrq = new JsonObjectRequest(
                 Request.Method.GET,

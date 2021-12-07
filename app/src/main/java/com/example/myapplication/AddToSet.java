@@ -119,7 +119,7 @@ public class AddToSet extends AppCompatActivity {
 
                     //Upload here
 
-                    String url = "http://197.1.111.148/upload_save_picture";
+                    String url = Acceuil.apiURL + "upload_save_picture";
 
                     RequestQueue requestQueue = Volley.newRequestQueue(AddToSet.this);
 
