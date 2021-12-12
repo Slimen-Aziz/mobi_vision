@@ -35,7 +35,7 @@ public class Acceuil extends AppCompatActivity {
 
     public static ArrayList<Contact> data = new ArrayList<Contact>();
     public static ArrayList<String> pictureData = new ArrayList<String>();
-    public static String apiURL = "http://197.1.111.148/";
+    public static String apiURL = "http://102.157.97.246/";
 
     public static boolean callPermission = false;
 
@@ -58,6 +58,7 @@ public class Acceuil extends AppCompatActivity {
         //set data here
         String urlLabel = u.replaceAll("\\s+", "%20");
         Log.e("urlLabel", urlLabel);
+        Log.e("newLinkAPI", apiURL);
         String url = apiURL + "my_pictures?label=" + urlLabel;
 
         RequestQueue rq = Volley.newRequestQueue(this);
