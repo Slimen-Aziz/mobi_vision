@@ -40,7 +40,7 @@ public class AddToSet extends AppCompatActivity {
 
     //EditText label;
 
-    private String Document_img1="";
+    private String Document_img1 = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
