@@ -22,19 +22,19 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnajout_acc"
+        android:id="@+id/btn_blur"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Ajouter Image" />
 
     <Button
-        android:id="@+id/btnaff_acc"
+        android:id="@+id/btn_bw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mes images" />
 
     <Button
-        android:id="@+id/btnClass_acc"
+        android:id="@+id/btn_filterFinal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deviner" />

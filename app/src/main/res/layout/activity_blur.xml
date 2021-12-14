@@ -7,13 +7,13 @@
     android:background="@color/BG"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".AddToSet">
+    tools:context=".Blur">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add To Dataset"
+        android:text="Blur Image"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="35sp"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:text="Envoyer"
+        android:text="Process"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/white"
         android:textStyle="bold"

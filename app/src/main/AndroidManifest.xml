@@ -22,6 +22,9 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Blur"
+            android:exported="true" />
+        <activity
             android:name=".Classify"
             android:exported="true" />
         <activity

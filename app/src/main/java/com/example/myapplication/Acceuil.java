@@ -1,17 +1,13 @@
 package com.example.myapplication;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,7 +33,7 @@ public class Acceuil extends AppCompatActivity {
     public static ArrayList<String> pictureData = new ArrayList<String>();
     public static String apiURL = "http://102.157.97.246/";
 
-    public static boolean callPermission = false;
+    //public static boolean callPermission = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +41,9 @@ public class Acceuil extends AppCompatActivity {
         setContentView(R.layout.activity_acceuil);
 
         tvusername = findViewById(R.id.tvuser_acc);
-        btnajout = findViewById(R.id.btnajout_acc);
-        btnaff = findViewById(R.id.btnaff_acc);
-        btnGuess = findViewById(R.id.btnClass_acc);
+        btnajout = findViewById(R.id.btn_blur);
+        btnaff = findViewById(R.id.btn_bw);
+        btnGuess = findViewById(R.id.btn_filterFinal);
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
@@ -128,17 +124,17 @@ public class Acceuil extends AppCompatActivity {
             }
         });
 
-        callPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
+        /*callPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
         if (!callPermission)
         {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.CALL_PHONE},
                     1);
-        }
+        }*/
 
     }
 
-    @Override
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
@@ -154,6 +150,6 @@ public class Acceuil extends AppCompatActivity {
             }
         }
 
-    }
+    }*/
 
 }

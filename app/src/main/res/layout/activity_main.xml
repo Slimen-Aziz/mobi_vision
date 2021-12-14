@@ -5,67 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BG"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/settingsBtn_auth"
+    <TextView
+        android:id="@+id/tvuser_acc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:clickable="true"
-        android:tint="@android:color/white"
-        app:backgroundTint="#673AB7"
-        app:srcCompat="@drawable/baseline_settings_24"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:text="Home"
+        android:textAlignment="center"
+        android:textColor="@color/royal_blue"
+        android:textSize="48sp"
+        android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_blur"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="blur faces" />
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/st_titre1"
-            android:text="Login"
-            android:textColor="@color/royal_blue" />
+    <Button
+        android:id="@+id/btn_bw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="b/w filter" />
 
-        <EditText
-            android:id="@+id/ednom_auth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:ems="10"
-            android:hint="Full Name"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+    <Button
+        android:id="@+id/btn_filterFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="// filter" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnval_auth"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Valider" />
-
-            <Button
-                android:id="@+id/btnquit_auth"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Quitter" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="exit" />
 
 </LinearLayout>
