@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -109,10 +108,10 @@ public class Blur extends AppCompatActivity {
 
                 switch(u) {
                     case "Blur":
-                        route = "negative_picture";
+                        route = "blur_picture";
                         break;
                     case "Black & White":
-                        route = "negative_picture";
+                        route = "black_white_picture";
                         break;
                     default:
                         route = "negative_picture";
@@ -244,7 +243,9 @@ public class Blur extends AppCompatActivity {
 
     private void saveImage(Bitmap finalBitmap, String image_name) {
 
-        String root = Environment.getExternalStorageDirectory().toString();
+        //String root = Environment.getExternalStorageDirectory().toString();
+        String root = MediaStore.Images.Media.DATA;
+        Log.e("root", root);
         File myDir = new File(root);
         myDir.mkdirs();
         String fname = "Image-" + image_name+ ".jpg";
