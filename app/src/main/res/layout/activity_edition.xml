@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:paddingBottom="20dp"
-        android:text="Mes images"
+        android:text="My Images"
         android:textColor="@color/royal_blue" />
 
     <androidx.recyclerview.widget.RecyclerView

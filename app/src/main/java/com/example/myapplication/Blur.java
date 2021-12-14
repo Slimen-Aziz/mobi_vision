@@ -280,6 +280,7 @@ public class Blur extends AppCompatActivity {
         //String fname = "Image-" + image_name+ ".jpg";
         String fname = "Image-" + n + ".jpg";
         File file = new File(myDir, fname);
+        MainActivity.savedImages.add(file.getPath());
         if (file.exists()) file.delete();
         Log.i("LOAD", root + fname);
         try {
