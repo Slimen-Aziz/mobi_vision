@@ -19,17 +19,10 @@ public class Edition extends AppCompatActivity {
         setContentView(R.layout.activity_edition);
 
         mylist = findViewById(R.id.rv_edition);
-        //edrech = findViewById(R.id.edrech_edition);
 
-        //ArrayAdapter ad = new ArrayAdapter(Edition.this, android.R.layout.simple_list_item_1, Acceuil.data);
-        //MyAdapter ad = new MyAdapter(this, Acceuil.data);
-
-        //MyContactAdapterRV ad = new MyContactAdapterRV(this, Acceuil.data);
-        //MyPicturesAdapterRV ad = new MyPicturesAdapterRV(this, Acceuil.pictureData);
         MyPicturesAdapterRV ad = new MyPicturesAdapterRV(this, MainActivity.savedImages);
 
         LinearLayoutManager manager = new GridLayoutManager(this, 1);
-        //LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
         mylist.setLayoutManager(manager);
 
         mylist.setAdapter(ad);

@@ -25,19 +25,7 @@
             android:name=".Blur"
             android:exported="true" />
         <activity
-            android:name=".Classify"
-            android:exported="true" />
-        <activity
-            android:name=".AddToSet"
-            android:exported="true" />
-        <activity
             android:name=".Edition"
-            android:exported="true" />
-        <activity
-            android:name=".Ajout"
-            android:exported="true" />
-        <activity
-            android:name=".Acceuil"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
