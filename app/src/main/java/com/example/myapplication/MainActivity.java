@@ -1,17 +1,13 @@
 package com.example.myapplication;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<String> savedImages = new ArrayList<>();
 
-    public static boolean readPermission = false;
+    /*public static boolean readPermission = false;
     public static boolean writePermission = false;
     public static boolean internetPermission = false;
     public static boolean netStatePermission = false;
-    public static boolean cameraPermission = false;
+    public static boolean cameraPermission = false;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +39,22 @@ public class MainActivity extends AppCompatActivity {
 
         String path = Environment.getExternalStorageDirectory().toString() + "/myFilters/";
         File directory = new File(path);
-        File[] files = directory.listFiles();
+        if (directory.exists())
+        {
+            File[] files = directory.listFiles();
 
-        if (files.length != 0 && files != null){
+            if (files.length != 0 && files != null){
 
-            savedImages.clear();
+                savedImages.clear();
 
-            for (int i = 0; i < files.length; i++)
-            {
-                String save_path = files[i].getPath();
-                Log.e("Files", "FilePath: " + save_path);
-                savedImages.add(save_path);
+                for (int i = 0; i < files.length; i++)
+                {
+                    String save_path = files[i].getPath();
+                    Log.e("Files", "FilePath: " + save_path);
+                    savedImages.add(save_path);
+                }
+
             }
-
         }
 
         btnQuit.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        writePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        /*writePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         if (!writePermission)
         {
             ActivityCompat.requestPermissions(this,
@@ -119,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.CAMERA},
                     5);
-        }
+        }*/
 
     }
 
-    @Override
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
@@ -187,6 +186,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-    }
+    }*/
 
 }
