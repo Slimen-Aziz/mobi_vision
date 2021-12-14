@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String apiURL = "http://102.157.97.246/";
+    public static String apiURL = "http://41.62.103.62/";
 
-    Button btnBlur, btnBW, btnFilterFinal, btnQuit;
+    Button btnBlur, btnBW, btnFilterFinal, btnViewSaved, btnQuit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         btnBlur = findViewById(R.id.btn_blur);
         btnBW = findViewById(R.id.btn_bw);
         btnFilterFinal = findViewById(R.id.btn_filterFinal);
+        btnViewSaved = findViewById(R.id.btn_viewSaved);
         btnQuit = findViewById(R.id.btn_quit);
 
         btnQuit.setOnClickListener(new View.OnClickListener() {
@@ -35,17 +36,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Blur.class);
+                i.putExtra("filterType", "Blur");
                 startActivity(i);
             }
         });
 
-        /*btnval.setOnClickListener(new View.OnClickListener() {
+        btnBW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i = new Intent(MainActivity.this, Acceuil.class);
-                //startActivity(i);
+                Intent i = new Intent(MainActivity.this, Blur.class);
+                i.putExtra("filterType", "Black & White");
+                startActivity(i);
             }
-        });*/
+        });
+
+        btnFilterFinal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, Blur.class);
+                i.putExtra("filterType", "Final");
+                startActivity(i);
+            }
+        });
+
+        btnViewSaved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //
+            }
+        });
 
     }
 

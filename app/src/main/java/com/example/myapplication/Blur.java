@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -40,6 +41,7 @@ public class Blur extends AppCompatActivity {
 
     ImageView IDProfBlur;
     Button processBlur;
+    TextView type;
 
     private String Document_img1 = "";
 
@@ -50,6 +52,7 @@ public class Blur extends AppCompatActivity {
 
         IDProfBlur = findViewById(R.id.IdProfResult);
         processBlur = findViewById(R.id.processBlurBtn);
+        type = findViewById(R.id.tv_filterType);
 
         IDProfBlur.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,17 +99,38 @@ public class Blur extends AppCompatActivity {
                 //wait for response
                 //show alert dialog with response and save button
 
-                String url = MainActivity.apiURL + "?";
+                Intent i = getIntent();
+                Bundle b = i.getExtras();
+                String u = b.getString("filterType");
+
+                type.setText(u + " Filter");
+
+                String route = "";
+
+                switch(u) {
+                    case "Blur":
+                        route = "negative_picture";
+                        break;
+                    case "Black & White":
+                        route = "negative_picture";
+                        break;
+                    default:
+                        route = "negative_picture";
+                }
+
+                String url = MainActivity.apiURL + route;
 
                 RequestQueue requestQueue = Volley.newRequestQueue(Blur.this);
 
                 JSONObject postData = new JSONObject();
                 try {
                     postData.put("base64", Document_img1);
+                    Log.e("myObject", postData.toString());
                     Toast.makeText(Blur.this, "Processing..", Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.e("error", e.toString());
                     Toast.makeText(Blur.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -117,7 +141,13 @@ public class Blur extends AppCompatActivity {
                         //Log.e("Guess Result", response.toString());
                         //Toast.makeText(Classify.this, response.toString(), Toast.LENGTH_LONG).show();
 
-                        String imgKey = response.toString(); //get first ?
+                        String imgKey = null;
+                        try {
+                            imgKey = response.get("result").toString();
+                            Log.e("imgKey", imgKey);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                         byte[] imageBytes = Base64.decode(imgKey, Base64.DEFAULT);
                         Bitmap bmp = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
