@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Blur Image"
+        android:text="Filters"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="35sp"
@@ -29,12 +29,36 @@
         android:background="@color/med_blue" />
 
     <Button
-        android:id="@+id/processBlurBtn"
+        android:id="@+id/blur_btn"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:text="Process"
+        android:text="Blur Filter"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:iconTint="#673AB7" />
+
+    <Button
+        android:id="@+id/negative_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Negative Effect"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:iconTint="#673AB7" />
+
+    <Button
+        android:id="@+id/bw_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Black/White Filter"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/white"
         android:textStyle="bold"

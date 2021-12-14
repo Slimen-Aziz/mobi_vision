@@ -17,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -36,12 +35,13 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Random;
 
 public class Blur extends AppCompatActivity {
 
     ImageView IDProfBlur;
-    Button processBlur;
-    TextView type;
+    Button blurBtn, negativeBtn, bwBtn;
+    //TextView type;
 
     private String Document_img1 = "";
 
@@ -51,8 +51,10 @@ public class Blur extends AppCompatActivity {
         setContentView(R.layout.activity_blur);
 
         IDProfBlur = findViewById(R.id.IdProfResult);
-        processBlur = findViewById(R.id.processBlurBtn);
-        type = findViewById(R.id.tv_filterType);
+        blurBtn = findViewById(R.id.blur_btn);
+        negativeBtn = findViewById(R.id.negative_btn);
+        bwBtn = findViewById(R.id.bw_btn);
+        //type = findViewById(R.id.tv_filterType);
 
         IDProfBlur.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,117 +93,29 @@ public class Blur extends AppCompatActivity {
             }
         });
 
-        processBlur.setOnClickListener(new View.OnClickListener() {
+        blurBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //send to api
-                //wait for response
-                //show alert dialog with response and save button
+                processImage("blur_picture");
 
-                Intent i = getIntent();
-                Bundle b = i.getExtras();
-                String u = b.getString("filterType");
+            }
+        });
 
-                type.setText(u + " Filter");
+        bwBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                String route = "";
+                processImage("black_white_picture");
 
-                switch(u) {
-                    case "Blur":
-                        route = "blur_picture";
-                        break;
-                    case "Black & White":
-                        route = "black_white_picture";
-                        break;
-                    default:
-                        route = "negative_picture";
-                }
+            }
+        });
 
-                String url = MainActivity.apiURL + route;
+        negativeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                RequestQueue requestQueue = Volley.newRequestQueue(Blur.this);
-
-                JSONObject postData = new JSONObject();
-                try {
-                    postData.put("base64", Document_img1);
-                    Log.e("myObject", postData.toString());
-                    Toast.makeText(Blur.this, "Processing..", Toast.LENGTH_SHORT).show();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("error", e.toString());
-                    Toast.makeText(Blur.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
-                }
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        //Log.e("Guess Result", response.toString());
-                        //Toast.makeText(Classify.this, response.toString(), Toast.LENGTH_LONG).show();
-
-                        String imgKey = null;
-                        try {
-                            imgKey = response.get("result").toString();
-                            Log.e("imgKey", imgKey);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        byte[] imageBytes = Base64.decode(imgKey, Base64.DEFAULT);
-                        Bitmap bmp = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-
-                        //Alert Dialog here
-
-                        LayoutInflater li = LayoutInflater.from(Blur.this);
-                        View promptsView = li.inflate(R.layout.result_image, null);
-
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Blur.this);
-
-                        // set prompts.xml to alertdialog builder
-                        alertDialogBuilder.setView(promptsView);
-
-                        //final EditText userInput = (EditText) promptsView.findViewById(R.id.ed_api_dialog);
-
-                        final ImageView resultImg = (ImageView) promptsView.findViewById(R.id.IdProfResult);
-                        bmp = getResizedBitmap(bmp, 400); //un-necessary ?
-                        resultImg.setImageBitmap(bmp);
-                        final Bitmap saveBmp = bmp;
-
-                        // set dialog message
-                        alertDialogBuilder
-                                .setCancelable(false)
-                                .setPositiveButton("SAVE",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog,int id) {
-                                                // save to device
-                                                saveImage(saveBmp, "test");
-                                            }
-                                        })
-                                .setNegativeButton("Cancel",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog,int id) {
-                                                dialog.cancel();
-                                            }
-                                        });
-
-                        // create alert dialog
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-
-                        // show it
-                        alertDialog.show();
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        Toast.makeText(Blur.this, "Error: " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                requestQueue.add(jsonObjectRequest);
+                processImage("negative_picture");
 
             }
         });
@@ -242,13 +156,129 @@ public class Blur extends AppCompatActivity {
 
     }
 
+    private void processImage(String route) {
+        //send to api
+        //wait for response
+        //show alert dialog with response and save button
+
+        //Intent i = getIntent();
+        //Bundle b = i.getExtras();
+        //String u = b.getString("filterType");
+
+        //type.setText(u + " Filter");
+
+        /*String route = "";
+
+        switch(u) {
+            case "Blur":
+                route = "blur_picture";
+                break;
+            case "Black & White":
+                route = "black_white_picture";
+                break;
+            default:
+                route = "negative_picture";
+        }*/
+
+        String url = MainActivity.apiURL + route;
+
+        RequestQueue requestQueue = Volley.newRequestQueue(Blur.this);
+
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("base64", Document_img1);
+            Log.e("myObject", postData.toString());
+            Toast.makeText(Blur.this, "Processing..", Toast.LENGTH_SHORT).show();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("error", e.toString());
+            Toast.makeText(Blur.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                //Log.e("Guess Result", response.toString());
+                //Toast.makeText(Classify.this, response.toString(), Toast.LENGTH_LONG).show();
+
+                String imgKey = null;
+                try {
+                    imgKey = response.get("result").toString();
+                    Log.e("imgKey", imgKey);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                byte[] imageBytes = Base64.decode(imgKey, Base64.DEFAULT);
+                Bitmap bmp = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+
+                //Alert Dialog here
+
+                LayoutInflater li = LayoutInflater.from(Blur.this);
+                View promptsView = li.inflate(R.layout.result_image, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Blur.this);
+
+                // set prompts.xml to alertdialog builder
+                alertDialogBuilder.setView(promptsView);
+
+                //final EditText userInput = (EditText) promptsView.findViewById(R.id.ed_api_dialog);
+
+                final ImageView resultImg = (ImageView) promptsView.findViewById(R.id.IdProfResult);
+                bmp = getResizedBitmap(bmp, 400); //un-necessary ?
+                resultImg.setImageBitmap(bmp);
+                final Bitmap saveBmp = bmp;
+
+                // set dialog message
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("SAVE",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        // save to device
+                                        saveImage(saveBmp, "test");
+                                    }
+                                })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(Blur.this, "Error: " + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+    }
+
     private void saveImage(Bitmap finalBitmap, String image_name) {
 
         String root = Environment.getExternalStorageDirectory().toString() + "/myFilters/";
         Log.e("root", root);
         File myDir = new File(root);
         myDir.mkdirs();
-        String fname = "Image-" + image_name+ ".jpg";
+
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);
+
+        //String fname = "Image-" + image_name+ ".jpg";
+        String fname = "Image-" + n + ".jpg";
         File file = new File(myDir, fname);
         if (file.exists()) file.delete();
         Log.i("LOAD", root + fname);

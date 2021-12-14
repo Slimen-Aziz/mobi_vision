@@ -41,7 +41,7 @@ public class Acceuil extends AppCompatActivity {
         setContentView(R.layout.activity_acceuil);
 
         tvusername = findViewById(R.id.tvuser_acc);
-        btnajout = findViewById(R.id.btn_blur);
+        btnajout = findViewById(R.id.btn_filters);
         btnaff = findViewById(R.id.btn_bw);
         btnGuess = findViewById(R.id.btn_filterFinal);
 

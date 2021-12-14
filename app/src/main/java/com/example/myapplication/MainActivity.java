@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static String apiURL = "http://41.62.103.62/";
 
-    Button btnBlur, btnBW, btnFilterFinal, btnViewSaved, btnQuit;
+    Button btnFilters, btnViewSaved, btnQuit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnBlur = findViewById(R.id.btn_blur);
-        btnBW = findViewById(R.id.btn_bw);
-        btnFilterFinal = findViewById(R.id.btn_filterFinal);
+        btnFilters = findViewById(R.id.btn_filters);
         btnViewSaved = findViewById(R.id.btn_viewSaved);
         btnQuit = findViewById(R.id.btn_quit);
 
@@ -32,29 +30,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnBlur.setOnClickListener(new View.OnClickListener() {
+        btnFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Blur.class);
-                i.putExtra("filterType", "Blur");
-                startActivity(i);
-            }
-        });
-
-        btnBW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Blur.class);
-                i.putExtra("filterType", "Black & White");
-                startActivity(i);
-            }
-        });
-
-        btnFilterFinal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Blur.class);
-                i.putExtra("filterType", "Final");
                 startActivity(i);
             }
         });

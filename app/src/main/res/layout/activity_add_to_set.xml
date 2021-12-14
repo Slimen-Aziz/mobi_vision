@@ -28,7 +28,7 @@
         android:background="@color/med_blue" />
 
     <Button
-        android:id="@+id/processBlurBtn"
+        android:id="@+id/blur_btn"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

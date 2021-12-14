@@ -22,22 +22,10 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btn_blur"
+        android:id="@+id/btn_filters"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="blur faces" />
-
-    <Button
-        android:id="@+id/btn_bw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="b/w filter" />
-
-    <Button
-        android:id="@+id/btn_filterFinal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="negative filter" />
+        android:text="filters" />
 
     <Button
         android:id="@+id/btn_viewSaved"

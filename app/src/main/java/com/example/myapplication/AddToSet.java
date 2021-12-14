@@ -48,7 +48,7 @@ public class AddToSet extends AppCompatActivity {
         setContentView(R.layout.activity_add_to_set);
 
         IDProf=(ImageView)findViewById(R.id.IdProfResult);
-        Upload_Btn=(Button)findViewById(R.id.processBlurBtn);
+        Upload_Btn=(Button)findViewById(R.id.blur_btn);
         //label= findViewById(R.id.edLab_add);
 
         Intent i = getIntent();
