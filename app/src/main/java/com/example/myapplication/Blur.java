@@ -244,7 +244,7 @@ public class Blur extends AppCompatActivity {
 
     private void saveImage(Bitmap finalBitmap, String image_name) {
 
-        String root = Environment.getExternalStorageDirectory().toString() + "/myFilters";
+        String root = Environment.getExternalStorageDirectory().toString() + "/myFilters/";
         Log.e("root", root);
         File myDir = new File(root);
         myDir.mkdirs();
