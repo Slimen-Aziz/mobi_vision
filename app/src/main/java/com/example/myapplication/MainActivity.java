@@ -10,12 +10,15 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     public static String apiURL = "http://41.62.103.62/";
 
     Button btnFilters, btnViewSaved, btnQuit;
+
+    public static ArrayList<String> savedImages = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (files.length != 0 && files != null){
 
+            savedImages.clear();
+
             for (int i = 0; i < files.length; i++)
             {
-                Log.e("Files", "FileName:" + files[i].getName());
+                String save_path = files[i].getPath();
+                Log.e("Files", "FilePath: " + save_path);
+                savedImages.add(save_path);
             }
 
         }
@@ -59,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
         btnViewSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+                Intent i = new Intent(MainActivity.this, Edition.class);
+                startActivity(i);
             }
         });
 

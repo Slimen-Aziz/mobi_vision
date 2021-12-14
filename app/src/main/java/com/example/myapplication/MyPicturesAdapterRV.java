@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MyPicturesAdapterRV extends RecyclerView.Adapter<MyPicturesAdapterRV.MyViewHolder> {
@@ -36,13 +36,10 @@ public class MyPicturesAdapterRV extends RecyclerView.Adapter<MyPicturesAdapterR
 
     @Override
     public void onBindViewHolder(@NonNull MyPicturesAdapterRV.MyViewHolder holder, int position) {
-        String imgKey = data.get(position);
+        String imgPath = data.get(position);
 
-        byte[] imageBytes = Base64.decode(imgKey, Base64.DEFAULT);
-        Bitmap bmp = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-
-        //holder.tvnum.setText(c.getNumero());
-        //image.setImageBitmap(Bitmap.createScaledBitmap(bmp, 100,100, false));
+        File imgFile = new File(imgPath);
+        Bitmap bmp = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 
         holder.img.setImageBitmap(Bitmap.createScaledBitmap(bmp, 200,200, false));
 

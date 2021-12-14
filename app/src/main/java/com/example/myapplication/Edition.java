@@ -25,7 +25,8 @@ public class Edition extends AppCompatActivity {
         //MyAdapter ad = new MyAdapter(this, Acceuil.data);
 
         //MyContactAdapterRV ad = new MyContactAdapterRV(this, Acceuil.data);
-        MyPicturesAdapterRV ad = new MyPicturesAdapterRV(this, Acceuil.pictureData);
+        //MyPicturesAdapterRV ad = new MyPicturesAdapterRV(this, Acceuil.pictureData);
+        MyPicturesAdapterRV ad = new MyPicturesAdapterRV(this, MainActivity.savedImages);
 
         LinearLayoutManager manager = new GridLayoutManager(this, 1);
         //LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
