@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -243,8 +244,7 @@ public class Blur extends AppCompatActivity {
 
     private void saveImage(Bitmap finalBitmap, String image_name) {
 
-        //String root = Environment.getExternalStorageDirectory().toString();
-        String root = MediaStore.Images.Media.DATA;
+        String root = Environment.getExternalStorageDirectory().toString() + "/myFilters";
         Log.e("root", root);
         File myDir = new File(root);
         myDir.mkdirs();
