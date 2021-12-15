@@ -3,34 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/drawable/baseline_settings_20.xml" value="0.2203125" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/drawable/baseline_settings_24.xml" value="0.2203125" />
         <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/drawable/button.xml" value="0.2203125" />
         <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/drawable/editbox.xml" value="0.2203125" />
         <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/drawable/ic_insert_photo_white_48dp.xml" value="0.2203125" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2203125" />
         <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_acceuil.xml" value="0.33" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_add_to_set.xml" value="0.25" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_ajout.xml" value="0.16304347826086957" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_blur.xml" value="0.25" />
+        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_add_to_set.xml" value="0.33" />
         <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_classify.xml" value="0.16621376811594202" />
         <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_edition.xml" value="0.17527173913043478" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/dialog_settings.xml" value="0.25" />
-        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/result_image.xml" value="0.25" />
+        <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Apps/Android/TP/mobi_vision/app/src/main/res/layout/view_contact.xml" value="0.67" />
         <entry key="..\:/Apps/Android/TP/tp1/app/src/main/res/layout/activity_acceuil.xml" value="0.16" />
         <entry key="..\:/Apps/Android/TP/tp1/app/src/main/res/layout/activity_ajout.xml" value="0.33" />
         <entry key="..\:/Apps/Android/TP/tp1/app/src/main/res/layout/activity_edition.xml" value="0.2" />
         <entry key="..\:/Apps/Android/TP/tp1/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Apps/Android/TP/tp1/app/src/main/res/layout/view_contact.xml" value="0.33" />
+        <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/drawable/background_gradient.xml" value="0.2203125" />
         <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_acceuil.xml" value="0.19384057971014493" />
         <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_add_to_set.xml" value="0.25" />
         <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_ajout.xml" value="0.19384057971014493" />
+        <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_blur.xml" value="0.18115942028985507" />
         <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_classify.xml" value="0.25" />
         <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_edition.xml" value="0.2" />
         <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_main.xml" value="0.19384057971014493" />
+        <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/activity_mes_images.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/result_image.xml" value="0.18115942028985507" />
         <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/view_contact.xml" value="0.19384057971014493" />
+        <entry key="..\:/Users/Yassine/AndroidStudioProjects/mobi_vision/app/src/main/res/layout/view_picture.xml" value="0.18115942028985507" />
       </map>
     </option>
   </component>

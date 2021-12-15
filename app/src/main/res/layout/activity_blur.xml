@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BG"
+    android:backgroundTint="@color/BG"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".Blur">
+    tools:context=".Filters">
 
     <TextView
         android:id="@+id/tv_filterType"
@@ -24,44 +25,60 @@
     <ImageView
         android:id="@+id/IdProfResult"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="390dp"
         android:layout_marginTop="10dp"
         android:background="@color/med_blue" />
 
-    <Button
-        android:id="@+id/blur_btn"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:text="Blur Filter"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:iconTint="#673AB7" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/negative_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:text="Negative Effect"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:iconTint="#673AB7" />
+        <Button
+            android:id="@+id/blur_btn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#BA4D4D"
+            android:backgroundTint="@color/light_blue"
+            android:text="Blur"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:iconTint="#1D699C"
+            android:layout_width="wrap_content" />
 
-    <Button
-        android:id="@+id/bw_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:text="Black/White Filter"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:iconTint="#673AB7" />
+        <Button
+            android:id="@+id/negative_btn"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#BA4D4D"
+            android:backgroundTint="@color/light_blue"
+            android:text="Negative"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:iconTint="#1D699C"
+            android:layout_width="wrap_content" />
+
+        <Button
+            android:id="@+id/bw_btn"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#BA4D4D"
+            android:backgroundTint="@color/light_blue"
+            android:text="B and W"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:iconTint="#1D699C"
+            android:layout_width="wrap_content" />
+    </LinearLayout>
 
 </LinearLayout>

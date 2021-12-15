@@ -30,7 +30,7 @@ public class MyPicturesAdapterRV extends RecyclerView.Adapter<MyPicturesAdapterR
     @Override
     public MyPicturesAdapterRV.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inf = LayoutInflater.from(con);
-        View v = inf.inflate(R.layout.view_contact, null);
+        View v = inf.inflate(R.layout.view_picture, null);
         return new MyPicturesAdapterRV.MyViewHolder(v);
     }
 

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String apiURL = "http://41.62.103.62/";
+    public static String apiURL = "http://192.168.137.1/";
 
     Button btnFilters, btnViewSaved, btnQuit;
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         btnFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Blur.class);
+                Intent i = new Intent(MainActivity.this, Filters.class);
                 startActivity(i);
             }
         });
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         btnViewSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Edition.class);
+                Intent i = new Intent(MainActivity.this, MesImages.class);
                 startActivity(i);
             }
         });

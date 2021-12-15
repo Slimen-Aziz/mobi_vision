@@ -21,10 +21,10 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Blur"
+            android:name=".Filters"
             android:exported="true" />
         <activity
-            android:name=".Edition"
+            android:name=".MesImages"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

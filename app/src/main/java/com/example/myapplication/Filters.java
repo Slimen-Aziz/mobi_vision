@@ -37,11 +37,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Random;
 
-public class Blur extends AppCompatActivity {
+public class Filters extends AppCompatActivity {
 
-    ImageView IDProfBlur;
+    ImageView imageSelector;
     Button blurBtn, negativeBtn, bwBtn;
-    //TextView type;
 
     private String Document_img1 = "";
 
@@ -50,18 +49,17 @@ public class Blur extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blur);
 
-        IDProfBlur = findViewById(R.id.IdProfResult);
+        imageSelector = findViewById(R.id.IdProfResult);
         blurBtn = findViewById(R.id.blur_btn);
         negativeBtn = findViewById(R.id.negative_btn);
         bwBtn = findViewById(R.id.bw_btn);
-        //type = findViewById(R.id.tv_filterType);
 
-        IDProfBlur.setOnClickListener(new View.OnClickListener() {
+        imageSelector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-                AlertDialog.Builder builder = new AlertDialog.Builder(Blur.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Filters.this);
                 builder.setTitle("Add Photo!");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
@@ -72,8 +70,6 @@ public class Blur extends AppCompatActivity {
 
                             try {
                                 startActivityForResult(takePictureIntent, 1);
-                                //File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                                //takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                             } catch (ActivityNotFoundException e) {
                                 e.printStackTrace();
                             }
@@ -132,7 +128,7 @@ public class Blur extends AppCompatActivity {
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 imageBitmap = getResizedBitmap(imageBitmap, 400);
-                IDProfBlur.setImageBitmap(imageBitmap);
+                imageSelector.setImageBitmap(imageBitmap);
                 BitMapToString(imageBitmap);
 
             } else if (requestCode == 2) {
@@ -148,7 +144,7 @@ public class Blur extends AppCompatActivity {
                 thumbnail=getResizedBitmap(thumbnail, 400);
 
                 Log.w("GalleryPath: ", picturePath+"");
-                IDProfBlur.setImageBitmap(thumbnail);
+                imageSelector.setImageBitmap(thumbnail);
 
                 BitMapToString(thumbnail);
             }
@@ -157,43 +153,21 @@ public class Blur extends AppCompatActivity {
     }
 
     private void processImage(String route) {
-        //send to api
-        //wait for response
-        //show alert dialog with response and save button
-
-        //Intent i = getIntent();
-        //Bundle b = i.getExtras();
-        //String u = b.getString("filterType");
-
-        //type.setText(u + " Filter");
-
-        /*String route = "";
-
-        switch(u) {
-            case "Blur":
-                route = "blur_picture";
-                break;
-            case "Black & White":
-                route = "black_white_picture";
-                break;
-            default:
-                route = "negative_picture";
-        }*/
 
         String url = MainActivity.apiURL + route;
 
-        RequestQueue requestQueue = Volley.newRequestQueue(Blur.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(Filters.this);
 
         JSONObject postData = new JSONObject();
         try {
             postData.put("base64", Document_img1);
             Log.e("myObject", postData.toString());
-            Toast.makeText(Blur.this, "Processing..", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Filters.this, "Processing..", Toast.LENGTH_SHORT).show();
 
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e("error", e.toString());
-            Toast.makeText(Blur.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Filters.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
         }
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
@@ -216,18 +190,16 @@ public class Blur extends AppCompatActivity {
 
                 //Alert Dialog here
 
-                LayoutInflater li = LayoutInflater.from(Blur.this);
+                LayoutInflater li = LayoutInflater.from(Filters.this);
                 View promptsView = li.inflate(R.layout.result_image, null);
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Blur.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Filters.this);
 
                 // set prompts.xml to alertdialog builder
                 alertDialogBuilder.setView(promptsView);
 
-                //final EditText userInput = (EditText) promptsView.findViewById(R.id.ed_api_dialog);
-
                 final ImageView resultImg = (ImageView) promptsView.findViewById(R.id.IdProfResult);
-                bmp = getResizedBitmap(bmp, 400); //un-necessary ?
+                bmp = getResizedBitmap(bmp, 400);
                 resultImg.setImageBitmap(bmp);
                 final Bitmap saveBmp = bmp;
 
@@ -238,7 +210,7 @@ public class Blur extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,int id) {
                                         // save to device
-                                        saveImage(saveBmp, "test");
+                                        saveImage(saveBmp);
                                     }
                                 })
                         .setNegativeButton("Cancel",
@@ -259,14 +231,14 @@ public class Blur extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                Toast.makeText(Blur.this, "Error: " + error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Filters.this, "Error: " + error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void saveImage(Bitmap finalBitmap, String image_name) {
+    private void saveImage(Bitmap finalBitmap) {
 
         String root = Environment.getExternalStorageDirectory().toString() + "/myFilters/";
         Log.e("root", root);
@@ -277,7 +249,6 @@ public class Blur extends AppCompatActivity {
         int n = 10000;
         n = generator.nextInt(n);
 
-        //String fname = "Image-" + image_name+ ".jpg";
         String fname = "Image-" + n + ".jpg";
         File file = new File(myDir, fname);
         MainActivity.savedImages.add(file.getPath());
@@ -288,10 +259,10 @@ public class Blur extends AppCompatActivity {
             finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
-            Toast.makeText(Blur.this, "Saved..", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Filters.this, "Saved..", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(Blur.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Filters.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
