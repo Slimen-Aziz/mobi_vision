@@ -126,14 +126,6 @@ public class Acceuil extends AppCompatActivity {
             }
         });
 
-        /*callPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
-        if (!callPermission)
-        {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CALL_PHONE},
-                    1);
-        }*/
-
     }
 
     @Override
