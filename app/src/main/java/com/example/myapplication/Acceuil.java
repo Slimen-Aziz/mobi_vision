@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,11 +32,10 @@ public class Acceuil extends AppCompatActivity {
     TextView tvusername;
     Button btnajout, btnaff, btnGuess;
 
-    public static ArrayList<Contact> data = new ArrayList<Contact>();
     public static ArrayList<String> pictureData = new ArrayList<String>();
-    public static String apiURL = "http://102.157.97.246/";
+    public static String apiURL = "http://192.168.137.1/";
 
-    public static boolean callPermission = false;
+    public static boolean cameraPermission = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +47,23 @@ public class Acceuil extends AppCompatActivity {
         btnaff = findViewById(R.id.btnaff_acc);
         btnGuess = findViewById(R.id.btnClass_acc);
 
+        cameraPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+        if (!cameraPermission)
+        {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    100);
+        }
+
         Intent i = getIntent();
         Bundle b = i.getExtras();
         String u = b.getString("user");
 
         tvusername.setText("Acceuil de " + u);
 
-        //set data here
         String urlLabel = u.replaceAll("\\s+", "%20");
-        Log.e("urlLabel", urlLabel);
-        Log.e("newLinkAPI", apiURL);
+        //Log.e("urlLabel", urlLabel);
+        //Log.e("newLinkAPI", apiURL);
         String url = apiURL + "my_pictures?label=" + urlLabel;
 
         RequestQueue rq = Volley.newRequestQueue(this);
@@ -69,7 +74,7 @@ public class Acceuil extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("response", response.toString());
+                        //Log.e("response", response.toString());
                         try {
                             JSONArray arr = response.getJSONArray("result");
 
@@ -79,16 +84,10 @@ public class Acceuil extends AppCompatActivity {
                                 pictureData.add(arr.get(i).toString());
                             }
 
-                            Log.e("picData", "Size: " + pictureData.size());
-
-                            /*String imgKey = arr.get(0).toString();
-                            byte[] imageBytes = Base64.decode(imgKey, Base64.DEFAULT);
-                            Bitmap bmp = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-                            ImageView image = (ImageView) findViewById(R.id.imageView1);
-                            image.setImageBitmap(Bitmap.createScaledBitmap(bmp, 150,150, false));*/
+                            //Log.e("picData", "Size: " + pictureData.size());
 
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                         }
                     }
                 },
@@ -105,7 +104,6 @@ public class Acceuil extends AppCompatActivity {
         btnajout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i = new Intent(Acceuil.this, Ajout.class);
                 Intent i = new Intent(Acceuil.this, AddToSet.class);
                 i.putExtra("user", u);
                 startActivity(i);
@@ -128,32 +126,33 @@ public class Acceuil extends AppCompatActivity {
             }
         });
 
-        callPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
+        /*callPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
         if (!callPermission)
         {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.CALL_PHONE},
                     1);
-        }
+        }*/
 
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode,
+                permissions,
+                grantResults);
 
-        if (requestCode == 1)
-        {
-            if (grantResults.length > 0)
-            {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                {
-                    callPermission = true;
-                }
-                else finish();
+        if (requestCode == 100) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                cameraPermission = true;
+            }
+            else {
+                //finish();
             }
         }
-
     }
 
 }

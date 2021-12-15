@@ -41,9 +41,6 @@ public class MyPicturesAdapterRV extends RecyclerView.Adapter<MyPicturesAdapterR
         byte[] imageBytes = Base64.decode(imgKey, Base64.DEFAULT);
         Bitmap bmp = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
 
-        //holder.tvnum.setText(c.getNumero());
-        //image.setImageBitmap(Bitmap.createScaledBitmap(bmp, 100,100, false));
-
         holder.img.setImageBitmap(Bitmap.createScaledBitmap(bmp, 200,200, false));
 
     }

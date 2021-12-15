@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -38,8 +37,6 @@ public class AddToSet extends AppCompatActivity {
     ImageView IDProf;
     Button Upload_Btn;
 
-    //EditText label;
-
     private String Document_img1 = "";
 
     @Override
@@ -49,13 +46,10 @@ public class AddToSet extends AppCompatActivity {
 
         IDProf=(ImageView)findViewById(R.id.IdProf);
         Upload_Btn=(Button)findViewById(R.id.UploadBtn);
-        //label= findViewById(R.id.edLab_add);
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
         String u = b.getString("user");
-
-        //label.setHint(u);
 
         IDProf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,15 +67,10 @@ public class AddToSet extends AppCompatActivity {
 
                             try {
                                 startActivityForResult(takePictureIntent, 1);
-                                //File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                                //takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                             } catch (ActivityNotFoundException e) {
-                                e.printStackTrace();
+                                //e.printStackTrace();
                             }
 
-                            //File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                            //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                            //startActivityForResult(intent, 1);
                         }
                         else if (options[item].equals("Choose from Gallery"))
                         {
@@ -129,21 +118,21 @@ public class AddToSet extends AppCompatActivity {
                         postData.put("label", u);
 
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                        //e.printStackTrace();
                     }
 
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             Toast.makeText(AddToSet.this, "Upload Complete", Toast.LENGTH_SHORT).show();
-                            System.out.println(response);
-                            Log.e("UPLOAD", response.toString());
+                            //System.out.println(response);
+                            //Log.e("UPLOAD", response.toString());
                             Acceuil.pictureData.add(Document_img1);
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            error.printStackTrace();
+                            //error.printStackTrace();
                         }
                     });
 
@@ -169,45 +158,6 @@ public class AddToSet extends AppCompatActivity {
                 IDProf.setImageBitmap(imageBitmap);
                 BitMapToString(imageBitmap);
 
-                //Perfect !
-
-                /*File f = new File(Environment.getExternalStorageDirectory().toString());
-                for (File temp : f.listFiles()) {
-                    if (temp.getName().equals("temp.jpg")) {
-                        f = temp;
-                        break;
-                    }
-                }
-                try {
-                    Bitmap bitmap;
-                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-                    bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
-                    bitmap=getResizedBitmap(bitmap, 400);
-                    IDProf.setImageBitmap(bitmap);
-                    BitMapToString(bitmap);
-                    String path = android.os.Environment
-                            .getExternalStorageDirectory()
-                            + File.separator
-                            + "Phoenix" + File.separator + "default";
-                    f.delete();
-                    OutputStream outFile = null;
-                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    try {
-                        outFile = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
-                        outFile.flush();
-                        outFile.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
-
             } else if (requestCode == 2) {
                 Uri selectedImage = data.getData();
                 String[] filePath = { MediaStore.Images.Media.DATA };
@@ -220,7 +170,7 @@ public class AddToSet extends AppCompatActivity {
 
                 thumbnail=getResizedBitmap(thumbnail, 400);
 
-                Log.w("GalleryPath: ", picturePath+"");
+                //Log.w("GalleryPath: ", picturePath+"");
                 IDProf.setImageBitmap(thumbnail);
 
                 BitMapToString(thumbnail);
